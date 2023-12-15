@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <h1>Welcome to Valley Startup Consultancy</h1>
-      <p>This is a sample Next.js application.</p>
+      <p>We Are Tech Enthusiast</p>
     </div>
   );
 };
