@@ -10,10 +10,8 @@ phases:
 
   build:
     commands:
-      - bash ./script.sh
       - npm install
       - npm run build
-
   post_build:
     commands:
       - aws s3 sync out/ s3://valleyscbucketnextjs --delete --region us-east-1
