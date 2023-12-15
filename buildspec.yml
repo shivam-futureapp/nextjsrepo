@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - npm install -g next
+      - npm install
+
+  build:
+    commands:
+      - |
+        cat <<EOT >> package.json
+        {
+          "scripts": {
+            "dev": "next dev",
+            "test": "echo \\"Error: no test specified\\" && exit 1",
+            "build": "next build && next export",
+            "start": "next start"
+          }
+        }
+        EOT
+      - npm install
+      - npm run build
+
+  post_build:
+    commands:
+      - aws s3 sync out/ s3://valleyscbucketnextjs --delete --region us-east-1
